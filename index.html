@@ -29,9 +29,65 @@
   <link href="assets/css/style.css" rel="stylesheet">
 
  
-</head>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const countdownEndDate = new Date('2023-12-22T00:00:00Z').getTime();
 
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const timeDifference = countdownEndDate - now;
+
+        if (timeDifference > 0) {
+          const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+          // Change the message and add a line break
+          document.getElementById('countdown').innerHTML = `This website is currently hosted on a temporary link and it will be removed in the next 24 hours. If you are the developer, we recommend purchasing a domain name to ensure uninterrupted access for your users.<p><br>It will be disabled in <strong><span class="modal-message">${hours} Hours, ${minutes} Minutes, and ${seconds} Seconds.</strong></span>`;
+        } else {
+          // Change the message when the time ends
+          const deletedMessage = document.createElement('p');
+          deletedMessage.className = 'modal-message';
+          deletedMessage.innerHTML = '<strong>This website has been deactivated from our servers. If you are the developer, please purchase a domain name to continue using it.</strong>' ;
+          document.getElementById('countdown').replaceWith(deletedMessage);
+          // Remove the "Ok, I understand" button
+          document.querySelector('.modal-footer').remove();
+        }
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      $('#maintenanceModal').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
+    });
+  </script>
+  
+</head>
 <body>
+
+
+<!-- Your modal HTML structure -->
+<div class="modal" id="maintenanceModal" tabindex="-1" role="dialog" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header text-center">
+  <h5 class="modal-title w-100" id="maintenanceModalLabel">SHUTDOWN NOTICE</h5>
+</div>
+<div class="modal-body">
+  <p id="countdown" class="valid-message">Initializing...</p>
+</div>
+<div class="modal-footer justify-content-center">
+  <!-- "Ok, I understand" button -->
+  <button type="button" class="btn btn-primary" data-dismiss="modal">Ok, I understand.</button>
+</div>
+</div>
+</div>
+</div>
+</body>
+
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
