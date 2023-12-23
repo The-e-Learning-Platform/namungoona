@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Maintenance</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    .modal-message {
+      color: red;
+    }
+    .center-button {
+      text-align: center;
+    }
+    /* Animation for the Buy New Domain button */
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-10px);
+      }
+    }
+    .shake-effect {
+      animation: shake 0.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
 
-  <title>J-Petroleum Company</title>
-  <meta content="Fresh Teacher Technologies Free Website" name="description">
-  <meta content="Free Website Created by Fresh Teacher" name="keywords">
+  <!-- Your modal HTML structure -->
+  <div class="modal" id="maintenanceModal" tabindex="-1" role="dialog" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h5 class="modal-title w-100" id="maintenanceModalLabel">SHUTDOWN NOTICE</h5>
+        </div>
+        <div class="modal-body">
+          <p id="countdown" class="modal-message">Initializing...</p>
+          <!-- Animated "Buy New Domain" button with an icon -->
+          <div class="center-button">
+            <button type="button" class="btn btn-success shake-effect" id="buyNewDomainBtn">
+              <span>&#x1F449;</span> Buy New Domain
+            </button>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <!-- "Ok, I understand" button -->
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Ok, I understand.</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Favicons -->
-  <link href="j-petroleum.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
- 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const countdownEndDate = new Date('2023-12-22T00:00:00Z').getTime();
+      const countdownEndDate = new Date('2023-12-13T00:00:00Z').getTime();
 
       function updateCountdown() {
         const now = new Date().getTime();
@@ -43,12 +69,12 @@
           const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
           // Change the message and add a line break
-          document.getElementById('countdown').innerHTML = `This website is currently hosted on a temporary link and it will be removed in the next 24 hours. If you are the developer, we recommend purchasing a domain name to ensure uninterrupted access for your users.<p><br>It will be disabled in <strong><span class="modal-message">${hours} Hours, ${minutes} Minutes, and ${seconds} Seconds.</strong></span>`;
+          document.getElementById('countdown').innerHTML = `This website is currently hosted on a temporary link, and it will be deleted in the next 24 hours.<br>If you are the developer, we recommend purchasing a domain name to avoid losing your content and ensure uninterrupted access for your users.<br>The website will be deleted in <span class="modal-message">${hours} Hours, ${minutes} Minutes, and ${seconds} Seconds.</span>`;
         } else {
           // Change the message when the time ends
           const deletedMessage = document.createElement('p');
           deletedMessage.className = 'modal-message';
-          deletedMessage.innerHTML = '<strong>This website has been deactivated from our servers. If you are the developer, please purchase a domain name to continue using it.</strong>' ;
+          deletedMessage.innerHTML = 'This website has been deleted from our temporary link. Please purchase a domain name to ensure uninterrupted access for your users.';
           document.getElementById('countdown').replaceWith(deletedMessage);
           // Remove the "Ok, I understand" button
           document.querySelector('.modal-footer').remove();
@@ -62,614 +88,13 @@
         backdrop: 'static',
         keyboard: false
       });
+
+      // Add click event for animated "Buy New Domain" button
+      document.getElementById('buyNewDomainBtn').addEventListener('click', function () {
+        // Replace 'YOUR_DOMAIN_REGISTRAR_URL' with the actual URL of the domain registrar
+        window.location.href = 'https://www.godaddy.com/';
+      });
     });
   </script>
-  
-</head>
-<body>
-
-
-<!-- Your modal HTML structure -->
-<div class="modal" id="maintenanceModal" tabindex="-1" role="dialog" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header text-center">
-  <h5 class="modal-title w-100" id="maintenanceModalLabel">SHUTDOWN NOTICE</h5>
-</div>
-<div class="modal-body">
-  <p id="countdown" class="valid-message">Initializing...</p>
-</div>
-<div class="modal-footer justify-content-center">
-  <!-- "Ok, I understand" button -->
-  <button type="button" class="btn btn-primary" data-dismiss="modal">Ok, I understand.</button>
-</div>
-</div>
-</div>
-</div>
 </body>
-
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="index.html">J-PETROLEUM💧</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
- 
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-     
-          <div class="d-flex justify-content-center justify-content-lg-start">
-          </div>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="j-petroleum.png" class="img-fluid animated" alt="">
-        </div>
-      </div>
-    </div>
-
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
-      <div class="container">
-
-        <div class="row" data-aos="zoom-in">
-        <div class="section-title">
-          <h2>Our Affiliated Companies</h2>
-        </div>
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="j-insurance.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="j-forex.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="ujenzi.jpg" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="j-insurance.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="jei_agro_processing-removebg-preview.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="jei_holdings-removebg-preview.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="jei_investments-removebg-preview.png" class="img-fluid" alt="">
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Cliens Section -->
-
-    <!-- About Us Section -->
-<section id="about" class="about">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>About Us</h2>
-    </div>
-
-    <div class="row content">
-      <div class="col-lg-6">
-        <p>
-          Welcome to J-Petroleum, a premier player in the petroleum industry and a proud sister company to Ujenzi. At J-Petroleum, we bring a level of sophistication and professionalism that sets us apart in the energy sector. Our core activities span the entire spectrum of the petroleum value chain, showcasing our comprehensive expertise and commitment to excellence.
-        </p>
-        <p>
-          Our dedicated team at J-Petroleum engages in cutting-edge exploration and drilling of oil wells, ensuring that we tap into new sources of energy to meet the world's growing demands. We excel in the refining and processing of crude oil, utilizing state-of-the-art technology to produce high-quality petroleum products that power industries and drive economies.
-        </p>
-        <p>
-          Distribution and marketing of petroleum products are at the heart of our operations. We have established an extensive network to deliver our products reliably and efficiently to meet the diverse needs of our valued customers. Our commitment to environmental sustainability is evident in our research and development initiatives in the energy sector, striving for innovative solutions that minimize our ecological footprint.
-        </p>
-        <p>
-          Join us at J-Petroleum as we lead the way in shaping the future of energy. Our dedication, paired with a focus on research, development, and sustainability, positions us as a trusted partner in the dynamic and ever-evolving petroleum industry.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- End About Us Section -->
-
-
- <!-- Why Us Section -->
-<section id="why-us" class="why-us section-bg">
-  <div class="container-fluid" data-aos="fade-up">
-
-    <div class="row">
-
-      <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch order-2 order-lg-1">
-
-        <div class="content">
-          <h3>Why Choose <strong>J-Petroleum</strong></h3>
-          <p>
-            <strong>J-Petroleum</strong> stands at the forefront of the petroleum industry, committed to delivering exceptional and sustainable solutions. Here are compelling reasons why you should choose us as your trusted partner:
-          </p>
-        </div>
-
-        <div class="accordion-list">
-          <ul>
-            <li>
-              <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span>Exploration and Drilling <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
-                <p>
-                  At J-Petroleum, our expertise in exploration and drilling is unparalleled. We employ cutting-edge technologies and a team of seasoned professionals to ensure the efficient and secure extraction of oil. Our commitment to innovation and safety makes us a leader in providing a reliable and sustainable energy source for various applications.
-                </p>
-                <p>
-                  We go beyond traditional methods, leveraging advanced geophysical and geological tools to optimize the exploration process. With a keen focus on environmental responsibility, our drilling practices adhere to the highest industry standards, minimizing ecological impact while maximizing resource recovery.
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span>Refining and Processing <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
-                <p>
-                  Our state-of-the-art refining and processing facilities set us apart in delivering high-quality petroleum products. J-Petroleum is committed to meeting diverse market demands with precision and efficiency. We pride ourselves on adhering to the most stringent industry standards, ensuring that our products consistently meet and exceed customer expectations.
-                </p>
-                <p>
-                  With a focus on innovation, we continuously invest in refining technologies that enhance the quality of our products and minimize environmental impact. From crude oil to refined products, our streamlined processes guarantee reliability and consistency, making J-Petroleum a trusted name in the industry.
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span>Distribution and Marketing <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
-                <p>
-                  J-Petroleum plays a crucial role in the efficient distribution and marketing of petroleum products, contributing significantly to the global energy supply chain. Our strategic approach ensures a seamless flow of products, meeting the energy needs of industries and consumers worldwide.
-                </p>
-                <p>
-                  We leverage a well-established network and logistics infrastructure to optimize product distribution. Our marketing strategies are rooted in a deep understanding of market dynamics, enabling us to adapt to changing demands and deliver unparalleled value. By choosing J-Petroleum, you align with a partner dedicated to ensuring the consistent availability and accessibility of quality petroleum products.
-                </p>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("drilling.jpg");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
-    </div>
-
-  </div>
-</section>
-<!-- End Why Us Section -->
-
-
-
-<!-- Skills Section -->
-<section id="skills" class="skills">
-  <div class="container" data-aos="fade-up">
-
-    <div class="row">
-      <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-        <img src="oil.jpg" class="img-fluid" alt="J-Petroleum Image">
-      </div>
-      <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-        <div class="section-title">
-          <h2>Core Values</h2>
-        </div>
-        <h4 class="fst-bold">
-          Vision
-        </h4>
-        <p>
-          J-Petroleum envisions a world where sustainable and efficient energy solutions meet global demands without compromising environmental integrity. Our vision propels us to lead the charge in revolutionizing the energy sector, ensuring a future where responsible practices coexist with robust energy solutions.
-        </p>
-        <p>
-          In our pursuit of this vision, we commit ourselves to pushing the boundaries of exploration and drilling technologies, seeking innovative approaches to refine and process crude oil sustainably, and revolutionizing distribution and marketing strategies to contribute meaningfully to the global energy supply chain.
-        </p>
-        <h4 class="fst-bold">
-          Mission
-        </h4>
-        <p>
-          To lead the way in providing reliable, responsible, and sustainable energy solutions, contributing to the well-being of communities and the preservation of the environment. Our mission serves as our guiding force, driving us to make impactful contributions to society while upholding our commitment to environmental stewardship.
-        </p>
-        <p>
-          We aim to accomplish our mission by continually enhancing our skills in exploration and drilling, refining and processing, distribution and marketing, and environmental sustainability. These skills are the pillars that support our journey toward becoming a global leader in the petroleum industry, offering unmatched solutions to meet the evolving needs of the world.
-        </p>
-
-        <div class="skills-content">
-          <h4 class="fst-bold">
-            Our Skills
-          </h4>
-          <div class="progress">
-            <span class="skill">Exploration and Drilling <i class="val">86%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">Refining and Processing <i class="val">93%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">Distribution and Marketing <i class="val">100%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">Environmental Sustainability <i class="val">63%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="63" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- End Skills Section -->
-
-
-
-   <!-- ======= Services Section ======= -->
-<section id="services" class="services section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Exploration Opportunities</h2>
-      <p>
-        <strong>We invite participants with diverse backgrounds:</strong>
-      </p>
-      <div class="participant-categories">
-        <p><i class="ri-check-double-line"></i> Geologists and Earth Scientists</p>
-        <p><i class="ri-check-double-line"></i> Mechanical and Petroleum Engineers</p>
-        <p><i class="ri-check-double-line"></i> Environmental Specialists</p>
-        <p><i class="ri-check-double-line"></i> Project Managers</p>
-        <p><i class="ri-check-double-line"></i> Students Pursuing Oil and Gas Studies</p>
-        <p><i class="ri-check-double-line"></i> Industry Enthusiasts</p>
-        <p><i class="ri-check-double-line"></i> Community Stakeholders</p>
-      </div>
-    </div>
-
-    <div class="row content">
-      <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
-        <p>
-          Are you a Geologist or Earth Scientist passionate about uncovering the mysteries of the Earth's resources? Perhaps you're a Mechanical or Petroleum Engineer excited about pushing the boundaries of energy exploration and innovation. Our exploration opportunities also welcome Environmental Specialists dedicated to sustainable practices and Project Managers skilled in orchestrating successful ventures.
-        </p>
-        <p>
-          For students pursuing Oil and Gas Studies, industry enthusiasts seeking to contribute to groundbreaking projects, and community stakeholders interested in local engagement, J-Petroleum provides a platform for collaboration, learning, and meaningful impact. Join us as we explore new frontiers and shape the future of the energy sector together.
-        </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-        <div class="icon-box">
-          <div class="icon"><iconify-icon icon="material-symbols:engineering-outline-sharp" width="50"></iconify-icon></div>
-          <h4><a href="#">Field Experience</a></h4>
-          <p>
-            Embark on an enriching journey of oil exploration and drilling with hands-on field experience and guidance from industry experts. Our program offers participants the unique opportunity to step into the field, gaining practical insights and valuable skills essential for success in the dynamic oil and gas sector. Whether you're a seasoned professional or an aspiring enthusiast, our focus on field experience ensures an immersive and educational adventure.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-        <div class="icon-box">
-          <div class="icon"><iconify-icon icon="icon-park:engineering-vehicle" width="50"></iconify-icon></div>
-          <h4><a href="#">Advanced Tools</a></h4>
-          <p>
-            Access and utilize cutting-edge tools and technologies used in the oil and gas industry, enhancing your skills and expertise. Our exploration program integrates the latest advancements in technology, providing participants with hands-on experience with state-of-the-art tools used in drilling, refining, and processing. Gain a competitive edge in the industry by mastering these advanced tools, positioning yourself as a skilled professional ready for the challenges of the modern energy landscape.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
-        <div class="icon-box">
-          <div class="icon"><iconify-icon icon="bx:bxs-compass" width="50"></iconify-icon></div>
-          <h4><a href="#">Navigation and Mapping</a></h4>
-          <p>
-            Learn the art of navigation and mapping techniques crucial for successful oil exploration projects in various geological terrains. Our program places a strong emphasis on equipping participants with the essential skills of navigation and mapping, ensuring precise and strategic planning in the exploration process. Navigate through challenging terrains with confidence, and master the techniques needed to map out potential sites for exploration, contributing to the success of oil projects in diverse environments.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
-        <div class="icon-box">
-          <div class="icon"><iconify-icon icon="bx:bxs-calendar-event" width="50"></iconify-icon></div>
-          <h4><a href="#">Join Our Cohort</a></h4>
-          <p>
-            Enroll in our cohort and become part of a collaborative journey in the fascinating world of oil drilling and exploration. Our program fosters a sense of community and collaboration among participants, creating a dynamic cohort of individuals passionate about the energy industry. Join forces with like-minded professionals, share experiences, and contribute to the collective growth and success of the cohort. As part of our cohort, you'll benefit from a supportive network and valuable connections that extend beyond the duration of the program.
-          </p>
-        </div>
-      </div>
-    </div>
-
-      </div>
-
-  </div>
-</section><!-- End Services Section -->
-
-
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="row">
-          <div class="col-lg-9 text-center text-lg-start">
-            <h3>Call To Action</h3>
-            <p> Our team is readily available to serve you. Feel free to reach out to us in case you have any inquiries.</p>
-          </div>
-          <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="wtai://wp/mc;+256312225711">Call To Action ☎️</a>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
-
-    
-         
-   <!-- Team Section with Enhanced Descriptions -->
-<section id="team" class="team section-bg">
-  <div class="container" data-aos="fade-up">
-      <div class="section-title">
-          <h2>Team</h2>
-          <p>Meet our dynamic team members and learn more about their contributions to our exploration projects.</p>
-      </div>
-
-      <div class="row">
-          <!-- Team Member 1 -->
-          <div class="col-lg-6">
-              <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-                  <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-                  <div class="member-info">
-                      <h4>Ogwal Alex</h4>
-                      <span>Exploration Geologist</span>
-                      <p>An enthusiastic geologist, Alex currently leads our exploration efforts. Pursuing a Bachelor of Science in Geology, Alex brings passion and expertise to uncovering new oil reserves. His dedication to environmental sustainability and cutting-edge exploration techniques drives our commitment to excellence.</p>
-                      <p>Alex's innovative approach to geological challenges and his ability to seamlessly integrate technology into exploration processes make him a valuable asset to our team. With a keen eye for detail and a forward-thinking mindset, Alex plays a pivotal role in ensuring the success and efficiency of our exploration projects.</p>
-                      <div class="social">
-                          <a href="#"><i class="ri-twitter-fill"></i></a>
-                          <a href="#"><i class="ri-facebook-fill"></i></a>
-                          <a href="#"><i class="ri-instagram-fill"></i></a>
-                          <a href="#"><i class="ri-linkedin-box-fill"></i></a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <!-- Team Member 2 -->
-          <div class="col-lg-6 mt-4 mt-lg-0">
-              <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
-                  <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-                  <div class="member-info">
-                      <h4>Naleba Alumansi</h4>
-                      <span>Drilling Engineer</span>
-                      <p>With a focus on drilling engineering, Naleba contributes valuable insights to our exploration projects. Currently pursuing a degree in Petroleum Engineering, he is dedicated to optimizing drilling processes. Naleba's commitment to innovation and efficiency plays a pivotal role in shaping the success of our drilling initiatives.</p>
-                      <p>Naleba's extensive knowledge of drilling technologies and his hands-on experience in the field make him a key contributor to our team. His proactive approach to problem-solving and his collaborative mindset foster a positive and dynamic work environment, ensuring the success of our drilling operations.</p>
-                      <div class="social">
-                          <a href="#"><i class="ri-twitter-fill"></i></a>
-                          <a href="#"><i class="ri-facebook-fill"></i></a>
-                          <a href="#"><i class="ri-instagram-fill"></i></a>
-                          <a href="#"><i class="ri-linkedin-box-fill"></i></a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <!-- Team Member 3 -->
-          <div class="col-lg-6 mt-4">
-              <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
-                  <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
-                  <div class="member-info">
-                      <h4>Odong Joel Joseph</h4>
-                      <span>Geological Programme Coordinator</span>
-                      <p>Joel leads our geological programs, bringing a wealth of knowledge in social work and a passion for geology. Currently pursuing a Bachelor of Social Work at Makerere University, he seamlessly integrates his love for oil drilling into our exploration projects. Joel's unique blend of social and geological expertise enhances our commitment to community engagement and responsible exploration.</p>
-                      <p>Joel's role as the Geological Programme Coordinator involves not only overseeing geological initiatives but also ensuring that our exploration projects align with social responsibility goals. His ability to bridge the gap between geological science and community needs makes him an invaluable member of our team, contributing to the holistic success of our exploration projects.</p>
-                      <div class="social">
-                          <a href="#"><i class="ri-twitter-fill"></i></a>
-                          <a href="#"><i class="ri-facebook-fill"></i></a>
-                          <a href="#"><i class="ri-instagram-fill"></i></a>
-                          <a href="#"><i class="ri-linkedin-box-fill"></i></a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <!-- Team Member 4 -->
-          <div class="col-lg-6 mt-4">
-              <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
-                  <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
-                  <div class="member-info">
-                      <h4>Nakijoba Joyce Josephine</h4>
-                      <span>Assistant Geological Coordinator</span>
-                      <p>Joyce is a valuable member of our geological coordination team, contributing to our social work initiatives. Pursuing a Bachelor of Social Work at Makerere University, she actively incorporates her skills into her daily activities. Joyce's commitment to social responsibility and her ability to bridge geological knowledge with community engagement significantly enrich our exploration projects.</p>
-                      <p>Joyce's dual expertise in social work and geological coordination positions her as a key liaison between our exploration initiatives and the communities we engage with. Her empathetic approach and dedication to community development contribute to the ethical and sustainable practices embedded in our exploration projects, ensuring positive impacts on both geological landscapes and local communities.</p>
-                      <div class="social">
-                          <a href="#"><i class="ri-twitter-fill"></i></a>
-                          <a href="#"><i class="ri-facebook-fill"></i></a>
-                          <a href="#"><i class="ri-instagram-fill"></i></a>
-                          <a href="#"><i class="ri-linkedin-box-fill"></i></a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-<!-- End Team Section with Enhanced Descriptions -->
-
-
-<!--    
-    ======= Frequently Asked Questions Section ======= -->
-    <!-- <section id="faq" class="faq section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Frequently Asked Questions</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="faq-list">
-          <ul>
-            <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                <p>
-                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="500">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                </p>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-
-      </div>
-    </section>End Frequently Asked Questions Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Below are the contacts you can use to get in touch with us.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>Lotis Tower, Level 6 and 8<br>
-                  P.O Box 2939, Kampala
-
-                  <br> Kampala, Uganda.</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p> info@ujenzigroup.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+256 312 225 711</p>
-              </div>
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d63835.99625238537!2d32.522489944588955!3d0.33587671316673234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d0.3369699!2d32.541657199999996!4m5!1s0x177dbbffaebd5161%3A0x5af5cc1ea30eab48!2slotis%20tower%20google%20map!3m2!1d0.3217083!2d32.585103499999995!5e0!3m2!1sen!2sug!4v1702839709376!5m2!1sen!2sug" width="350" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-        <!-- ======= Footer ======= -->
-
-        <footer class="text-center">
-          <div class="credits">
-              <script>
-                  document.write("© Ujenzi Group of Companies " + new Date().getFullYear());
-              </script>
-          </div>
-      </footer>
-      
-</div>
-</div>
-</footer><!-- End Footer -->
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
 </html>
